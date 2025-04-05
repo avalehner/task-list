@@ -55,16 +55,12 @@ function handleTaskRemoveBtnClick(taskId) {
   const removedTaskDiv = document.getElementById(taskId)
   const removedTaskText = document.getElementById(`${taskId}-task`).textContent
   const removedTaskIndex = tasks.indexOf(removedTaskText)
-
-  console.log(removedTaskIndex)
   
   removedTaskDiv.classList.add('hidden')
   tasks.splice(removedTaskIndex,1)
 
   // //setting local storage again so removed item is gone
   localStorage.setItem('tasks', JSON.stringify(tasks))
-
-  console.log(tasks)
 }
 
 
