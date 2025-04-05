@@ -17,7 +17,7 @@ body {
   padding-bottom: 50px; 
 }
 
-.chore-container{
+.task-container{
   display: flex; 
   align-items: center; 
   justify-content: center;
@@ -25,7 +25,7 @@ body {
 
 /* inputs */
 
-.chore-input {
+.task-input {
   font-family: "Inter", sans-serif;
   background-color: #EEEEEE;
   border: none; 
@@ -48,7 +48,7 @@ h1 {
   padding: 40px 0 25px 0; 
 }
 
-.chore {
+.task {
   font-family: "Inter", sans-serif;
   font-size: 17px; 
   font-weight: 300; 
@@ -85,7 +85,7 @@ h1 {
   font-weight: 200; 
 }
 
-.chore-remove-btn {
+.task-remove-btn {
   margin: 5px; 
   font-size: 20px; 
   border: none; 

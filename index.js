@@ -1,63 +1,66 @@
-const choreInput = document.getElementById('chore-input')
+const taskInput = document.getElementById('task-input')
 const addBtn = document.getElementById('add-btn')
 const removeBtn = document.getElementById('remove-btn')
-const AllChoresContainer = document.getElementById('all-chores-container')
-let chores = []
+const AllTasksContainer = document.getElementById('all-tasks-container')
+let tasks = []
 
-// get chores from local storage
-const choresFromLocalStorage = JSON.parse(localStorage.getItem('chores'))
+// get tasks from local storage
+const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks'))
 
-if (choresFromLocalStorage) {
-  chores = choresFromLocalStorage
-  renderChores()
+if (tasksFromLocalStorage) {
+  tasks = tasksFromLocalStorage
+  renderTasks()
 } 
 
 // event listeners 
 addBtn.addEventListener('click', () => {
-  if (!choreInput.value) return
-  if (chores.includes(choreInput.value)) return
+  if (!taskInput.value) return
+  if (tasks.includes(taskInput.value)) return
 
-  chores.push(choreInput.value)
-  choreInput.value = ''
+  tasks.push(taskInput.value)
+  taskInput.value = ''
 
-  // save chores to local storage
-  localStorage.setItem('chores', JSON.stringify(chores))
-  renderChores()
+  // save tasks to local storage
+  localStorage.setItem('tasks', JSON.stringify(tasks))
+  renderTasks()
 })
 
 removeBtn.addEventListener('click', () => {
-  AllChoresContainer.innerHTML = ''
-  chores = []
+  AllTasksContainer.innerHTML = ''
+  tasks = []
   localStorage.clear()
 })
 
 document.addEventListener('click', (e) => {
   if(e.target.dataset.remove){
-    handleChoreRemoveBtnClick(e.target.dataset.remove)
+    handleTaskRemoveBtnClick(e.target.dataset.remove)
   }
 })
 
 // functions 
 
-function renderChores() {
-  let choreList = ''
-  for (let i = 0; i<chores.length; i++) {
-    choreList += `
-      <div class='chore-container' id='${chores[i]}'>
-        <p class='chore' id='${chores[i]}-chore'>${chores[i]}</p>
-        <button class='chore-remove-btn' data-remove='${chores[i]}'>&#215</button>
+function renderTasks() {
+  let taskList = ''
+  for (let i = 0; i<tasks.length; i++) {
+    taskList += `
+      <div class='task-container' id='${tasks[i]}'>
+        <p class='task' id='${tasks[i]}-task'>${tasks[i]}</p>
+        <button class='task-remove-btn' data-remove='${tasks[i]}'>&#215</button>
       </div>`
   }
-  AllChoresContainer.innerHTML = choreList
+  AllTasksContainer.innerHTML = taskList
 }
 
-function handleChoreRemoveBtnClick(choreId) {
-  const removedChoreDiv = document.getElementById(choreId)
-  const removedChoreText = document.getElementById(`${choreId}-chore`)
-  const removedChoreIndex = chores.indexOf(removedChoreText)
+function handleTaskRemoveBtnClick(taskId) {
+  const removedTaskDiv = document.getElementById(taskId)
+  const removedTaskText = document.getElementById(`${taskId}-task`)
+  const removedTaskIndex = tasks.indexOf(removedTaskText)
   
-  removedChoreDiv.classList.add('hidden')
-  chores.splice(removedChoreIndex,1)
+  removedTaskDiv.classList.add('hidden')
+  tasks.splice(removedTaskIndex,1)
+
+  //setting local storage again so removed item is gone
+  localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
 
