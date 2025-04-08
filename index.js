@@ -1,7 +1,7 @@
 const taskInput = document.getElementById('task-input')
 const addBtn = document.getElementById('add-btn')
 const removeBtn = document.getElementById('remove-btn')
-const AllTasksContainer = document.getElementById('all-tasks-container')
+const allTasksContainer = document.getElementById('all-tasks-container')
 let tasks = []
 
 // get tasks from local storage
@@ -26,7 +26,7 @@ addBtn.addEventListener('click', () => {
 })
 
 removeBtn.addEventListener('click', () => {
-  AllTasksContainer.innerHTML = ''
+  allTasksContainer.innerHTML = ''
   tasks = []
   localStorage.clear()
 })
@@ -48,7 +48,7 @@ function renderTasks() {
         <button class='task-remove-btn' data-remove='${tasks[i]}'>&#215</button>
       </div>`
   }
-  AllTasksContainer.innerHTML = taskList
+  allTasksContainer.innerHTML = taskList
 }
 
 function handleTaskRemoveBtnClick(taskId) {
@@ -59,7 +59,7 @@ function handleTaskRemoveBtnClick(taskId) {
   removedTaskDiv.classList.add('hidden')
   tasks.splice(removedTaskIndex,1)
 
-  // //setting local storage again so removed item is gone
+  // setting local storage again so removed item is gone
   localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
