@@ -13,7 +13,8 @@ if (tasksFromLocalStorage) {
 } 
 
 // event listeners 
-addBtn.addEventListener('click', () => {
+
+const handleArrowBtnClick = () => {
   if (!taskInput.value) return
   if (tasks.includes(taskInput.value)) return
 
@@ -23,6 +24,13 @@ addBtn.addEventListener('click', () => {
   // save tasks to local storage
   localStorage.setItem('tasks', JSON.stringify(tasks))
   renderTasks()
+  console.log('button clicked')
+}
+
+addBtn.addEventListener('click', handleArrowBtnClick)
+
+taskInput.addEventListener('keypress', (e) => {
+  if (e.key == 'Enter') addBtn.click()
 })
 
 removeBtn.addEventListener('click', () => {
@@ -38,7 +46,6 @@ document.addEventListener('click', (e) => {
 })
 
 // functions 
-
 function renderTasks() {
   let taskList = ''
   for (let i = 0; i<tasks.length; i++) {
