@@ -24,7 +24,6 @@ const handleArrowBtnClick = () => {
   // save tasks to local storage
   localStorage.setItem('tasks', JSON.stringify(tasks))
   renderTasks()
-  console.log('button clicked')
 }
 
 addBtn.addEventListener('click', handleArrowBtnClick)
@@ -50,9 +49,9 @@ function renderTasks() {
   let taskList = ''
   for (let i = 0; i<tasks.length; i++) {
     taskList += `
-      <div class='task-container' id='${tasks[i]}'>
-        <p class='task' id='${tasks[i]}-task'>${tasks[i]}</p>
-        <button class='task-remove-btn' data-remove='${tasks[i]}'>&#215</button>
+      <div class="task-container" id="${tasks[i]}">
+        <p class="task" id="${tasks[i]}-task">${tasks[i]}</p>
+        <button class="task-remove-btn" data-remove="${tasks[i]}">&#215</button>
       </div>`
   }
   allTasksContainer.innerHTML = taskList
