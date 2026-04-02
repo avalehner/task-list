@@ -10,12 +10,21 @@ body {
 /*  */
 
 nav ul {
-  list-style-type: none;
-  margin-bottom: 1.5rem; 
+  list-style-type: none; 
+  margin: 0.5rem 0 1.5rem; 
   display: flex; 
   gap: 0.7rem; 
   justify-content: center; 
+  font-family: "Concert One", sans-serif;
 }
+
+a {
+  text-decoration: none;
+  font-weight: 400; 
+  font-size: 1.3rem; 
+  color: black; 
+}
+
 
 /* containers */
 
