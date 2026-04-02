@@ -34,7 +34,7 @@ const handleArrowBtnClick = () => {
   taskInput.value = ''
 
   // save tasks to local storage
-  localStorage.setItem('tasks', JSON.stringify(tasks))
+  localStorage.setItem('recurse-tasks', JSON.stringify(tasks))
   renderTasks()
 }
 
@@ -47,7 +47,7 @@ const handleTaskRemoveBtnClick = (taskId) => {
   tasks.splice(removedTaskIndex,1)
 
   // setting local storage again so removed item is gone
-  localStorage.setItem('tasks', JSON.stringify(tasks))
+  localStorage.setItem('recurse-tasks', JSON.stringify(tasks))
 }
 
 const handleDragStart = (e) => {
@@ -70,7 +70,7 @@ const handleDrop = (e) => {
   const [draggedTask] = tasks.splice(draggedTaskIndex, 1) 
   tasks.splice(dropTargetIndex, 0, draggedTask)
 
-  localStorage.setItem('tasks', JSON.stringify(tasks))
+  localStorage.setItem('recurse-tasks', JSON.stringify(tasks))
   renderTasks()
 }
 
@@ -79,7 +79,7 @@ const handleDragEnd = (e) => {
 }
 
 // get tasks from local storage
-const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks'))
+const tasksFromLocalStorage = JSON.parse(localStorage.getItem('recurse-tasks'))
 
 if (tasksFromLocalStorage) {
   tasks = tasksFromLocalStorage
